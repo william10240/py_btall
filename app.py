@@ -16,7 +16,7 @@ if not os.path.exists(PHOTO_PATH):
 ptImg = re.compile(
     r'https://www.btbttpic.com/upload/attach.*?\.jpg', re.I | re.S | re.M)
 ptTitle = re.compile(
-    r'zip\.gif.*?>btbtt06.com(.*?)</a>', re.I | re.S | re.M)
+    r'zip\.gif.*?>btbtt.*?.com(.*?)</a>', re.I | re.S | re.M)
 ptAjax = re.compile(
     r'<a href="http://www.btbtt08.com/attach-dialog-(.*?)-ajax-1.htm" class="ajaxdialog" ajaxdialog', re.I)
 
@@ -86,7 +86,8 @@ def main(src):
     html = _request(src)
     src = _domatch(ptImg, html)
     filename = _domatch(ptTitle, html)[0]
-    # print(filename)
+    print(filename)
+
     ajax = _domatch(ptAjax, html)[0]
     # print(ajax)
 
